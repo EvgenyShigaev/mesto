@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Проект "Место"</title>
+</head>
+
+<body class="page">
+
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="Логотип &quot;Место Россия&quot;">
+  </header>
+
+  <main class="content">
+    <section class="profile">
+      <div class="profile__container">
+        <img class="profile__avatar" src="./images/avatar.svg" alt="Аватар">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button button-animation" type="button"></button>
+          <p class="profile__job">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add-button button-animation"></button>
+    </section>
+
+    <section class="elements">
+      <figure class="element">
+        <img class="element__image" src="./images/Baikal.jpg" alt="Лед на Байкале">
+        <figcaption class="element__container">
+          <p class="element__text">Байкал</p>
+          <button class="element__like button-animation"></button>
+        </figcaption>
+      </figure>
+      <figure class="element">
+        <img class="element__image" src="./images/North-Ossetia.jpg" alt="Горы Северной Оссетии">
+        <figcaption class="element__container">
+          <p class="element__text">Северная Осетия</p>
+          <button class="element__like button-animation"></button>
+        </figcaption>
+      </figure>
+      <figure class="element">
+        <img class="element__image" src="./images/Roza-Khutor.jpg" alt="Роза Хутор">
+        <figcaption class="element__container">
+          <p class="element__text">Роза Хутор</p>
+          <button class="element__like button-animation"></button>
+        </figcaption>
+      </figure>
+      <figure class="element">
+        <img class="element__image" src="./images/Ruskeala.jpg" alt="Рускеала">
+        <figcaption class="element__container">
+          <p class="element__text">Рускеала</p>
+          <button class="element__like button-animation"></button>
+        </figcaption>
+      </figure>
+      <figure class="element">
+        <img class="element__image" src="./images/Sudak.jpg" alt="Судак">
+        <figcaption class="element__container">
+          <p class="element__text">г. Судак</p>
+          <button class="element__like button-animation"></button>
+        </figcaption>
+      </figure>
+      <figure class="element">
+        <img class="element__image" src="./images/Vyborg.jpg" alt="Выборг">
+        <figcaption class="element__container">
+          <p class="element__text">г. Выборг</p>
+          <button class="element__like button-animation"></button>
+        </figcaption>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright" lang="en">&copy; 2022 Mesto Russia</p>
+  </footer>
+
+  <section class="popup">
+    <div class="popup__container">
+      <button class="popup__close-button button-animation" type="button"></button>
+      <form class="popup__form" name="popup__form">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input class="popup__field popup__form-name" type="text" placeholder="Ваше имя">
+        <input class="popup__field popup__form-job" type="text" placeholder="Ваш вид деятельности">
+        <button class="popup__save-button button-animation" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="./scripts/index.js"></script>
+</body>
+
+</html>

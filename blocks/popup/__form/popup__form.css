@@ -1,0 +1,8 @@
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-top: 34px;
+  min-width: 358px;
+  color: #000;
+}
