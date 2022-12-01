@@ -6,10 +6,19 @@
   margin: 51px auto 0;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 999px) {
   .elements {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-width: 740px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .elements {
+    display: flex;
+    flex-direction: column;
     gap: 14px;
-    max-width: calc(100vw - 38px);
-    margin-top: 36px;
+    max-width: 282px;
+    margin: 36px auto 0;
   }
 }

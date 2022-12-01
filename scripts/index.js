@@ -6,14 +6,16 @@ const popupElement = document.querySelector(".popup");
 const popupCloseButtonElement = popupElement.querySelector(".popup__close-button");
 const popupOpenButtonElement = document.querySelector(".profile__edit-button");
 const popupFormElement = popupElement.querySelector(".popup__form");
-const nameInput = popupElement.querySelector(".popup__form-name");
-const jobInput = popupElement.querySelector(".popup__form-job");
+const nameInput = popupElement.querySelector(".popup__input_data_name");
+const jobInput = popupElement.querySelector(".popup__input_data_job");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 
 // открытие попапа
 const openPopup = function() {
   popupElement.classList.toggle("popup__opened");
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }
 
 // сохранение информации из инпутов

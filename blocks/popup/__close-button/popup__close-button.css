@@ -10,4 +10,20 @@
   height: 32px;
   width: 32px;
   padding: 0;
+  cursor: pointer;
+  transition: .5s linear;
+}
+
+.popup__close-button:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 570px) {
+  .popup__close-button {
+    background-image: url(../../../images/close-icon-small.svg);
+    top: -36px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
 }

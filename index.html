@@ -20,56 +20,56 @@
         <img class="profile__avatar" src="./images/avatar.svg" alt="Аватар">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button button-animation" type="button"></button>
+          <button class="profile__edit-button" type="button"></button>
           <p class="profile__job">Исследователь океана</p>
         </div>
       </div>
-      <button class="profile__add-button button-animation"></button>
+      <button class="profile__add-button"></button>
     </section>
 
     <section class="elements">
-      <figure class="element">
+      <div class="element">
         <img class="element__image" src="./images/Baikal.jpg" alt="Лед на Байкале">
-        <figcaption class="element__container">
+        <div class="element__container">
           <p class="element__text">Байкал</p>
-          <button class="element__like button-animation"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__like" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img class="element__image" src="./images/North-Ossetia.jpg" alt="Горы Северной Оссетии">
-        <figcaption class="element__container">
+        <div class="element__container">
           <p class="element__text">Северная Осетия</p>
-          <button class="element__like button-animation"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__like" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img class="element__image" src="./images/Roza-Khutor.jpg" alt="Роза Хутор">
-        <figcaption class="element__container">
+        <div class="element__container">
           <p class="element__text">Роза Хутор</p>
-          <button class="element__like button-animation"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__like" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img class="element__image" src="./images/Ruskeala.jpg" alt="Рускеала">
-        <figcaption class="element__container">
+        <div class="element__container">
           <p class="element__text">Рускеала</p>
-          <button class="element__like button-animation"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__like" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img class="element__image" src="./images/Sudak.jpg" alt="Судак">
-        <figcaption class="element__container">
+        <div class="element__container">
           <p class="element__text">г. Судак</p>
-          <button class="element__like button-animation"></button>
-        </figcaption>
-      </figure>
-      <figure class="element">
+          <button class="element__like" type="button"></button>
+        </div>
+      </div>
+      <div class="element">
         <img class="element__image" src="./images/Vyborg.jpg" alt="Выборг">
-        <figcaption class="element__container">
+        <div class="element__container">
           <p class="element__text">г. Выборг</p>
-          <button class="element__like button-animation"></button>
-        </figcaption>
-      </figure>
+          <button class="element__like" type="button"></button>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -78,17 +78,17 @@
     <p class="footer__copyright" lang="en">&copy; 2022 Mesto Russia</p>
   </footer>
 
-  <section class="popup">
+  <div class="popup">
     <div class="popup__container">
-      <button class="popup__close-button button-animation" type="button"></button>
+      <button class="popup__close-button" type="button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="popup__form">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__field popup__form-name" type="text" placeholder="Ваше имя">
-        <input class="popup__field popup__form-job" type="text" placeholder="Ваш вид деятельности">
-        <button class="popup__save-button button-animation" type="submit">Сохранить</button>
+        <input class="popup__input popup__input_data_name" type="text" name="name" placeholder="Ваше имя">
+        <input class="popup__input popup__input_data_job" type="text" name="job" placeholder="Ваш вид деятельности">
+        <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
-  </section>
+  </div>
 
   <script src="./scripts/index.js"></script>
 </body>
