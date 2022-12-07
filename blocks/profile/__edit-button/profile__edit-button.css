@@ -23,3 +23,9 @@
     height: 18px;
   }
 }
+
+@media screen and (max-width: 350px) {
+  .profile__edit-button {
+    justify-self: left;
+  }
+}

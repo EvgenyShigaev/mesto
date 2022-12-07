@@ -8,10 +8,16 @@
   width: 22px;
   height: 19px;
   cursor: pointer;
-  padding: 0;
+  padding-right: 25px;
   transition: .5s linear;
 }
 
 .element__like:hover {
   opacity: .5;
+}
+
+@media screen and (max-width: 350px) {
+  .element__like {
+    padding-right: 34px;
+  }
 }
