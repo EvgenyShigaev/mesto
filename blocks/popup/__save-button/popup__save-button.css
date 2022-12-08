@@ -23,5 +23,8 @@
   .popup__save-button {
     min-height: 46px;
     max-width: 238px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 1.21;
   }
 }
