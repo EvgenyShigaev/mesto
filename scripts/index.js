@@ -28,7 +28,7 @@ const bigPhotoCaption = popupBigPhotoElement.querySelector('.popup__photo-captio
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
-  popup.addEventListener('click', closeByClickOnOverlay);
+  popup.addEventListener('mousedown', closeByClickOnOverlay);
   popup.addEventListener('click', closeByX);
 };
 
@@ -37,14 +37,14 @@ profileEditButton.addEventListener('click', () => {
   insertProfileValues();
 });
 
-function openAddCards () {
+function openAddCards() {
   openPopup(popupAddCardsElement);
   cardsForm.reset();
   const buttonSave = cardsForm.elements.submit;
   buttonSave.classList.add('popup__save-button_inactive');
-  buttonSave.setAttribute('disabled', true);   
+  buttonSave.setAttribute('disabled', true);
 }
-  cardsAddButton.addEventListener('click', openAddCards);
+cardsAddButton.addEventListener('click', openAddCards);
 // инпуты сразу заполнены при открытии
 function insertProfileValues() {
   nameInput.value = profileName.textContent;
@@ -61,7 +61,7 @@ profileForm.addEventListener('submit', (submitFormHandler) => {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEscape);
-  popup.removeEventListener('click', closeByClickOnOverlay);
+  popup.removeEventListener('mousedown', closeByClickOnOverlay);
   popup.removeEventListener('click', closeByX);
 }
 // закрытие попапов по крестику
@@ -81,8 +81,7 @@ function closeByEscape(evt) {
 // закрытие попапов по оверлею
 function closeByClickOnOverlay(evt) {
   if (evt.target.classList.contains('popup')) {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
+    closePopup(evt.target);
   }
 }
 // добавление карточек + открытие большой картинки
@@ -100,7 +99,7 @@ function createCard(card) {
     bigPhoto.alt = card.name;
     bigPhotoCaption.textContent = card.name;
     openPopup(popupBigPhotoElement);
-});
+  });
   return templateCloneElement;
 }
 // сохранение информации из инпутов для добавления карточки
