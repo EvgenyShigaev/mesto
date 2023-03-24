@@ -83,14 +83,16 @@ profileEditButton.addEventListener('click', () => {
   insertProfileValues();
 });
 //
-function openAddCards() {
+function openAddCardPopup() {
   openPopup(popupAddCardsElement);
   cardsForm.reset();
-  const buttonSave = cardsForm.elements.submit;
-  buttonSave.classList.add('popup__save-button_inactive');
-  buttonSave.setAttribute('disabled', true);
+  formValidatorCardsForm.resetValidation();
+
+  // const buttonSave = cardsForm.elements.submit;
+  // buttonSave.classList.add('popup__save-button_inactive');
+  // buttonSave.setAttribute('disabled', true);
 }
-cardsAddButton.addEventListener('click', openAddCards);
+cardsAddButton.addEventListener('click', openAddCardPopup);
 // инпуты сразу заполнены при открытии
 function insertProfileValues() {
   nameInput.value = profileName.textContent;
@@ -113,8 +115,7 @@ function closePopup(popup) {
 // закрытие попапов по крестику
 function closeByX(evt) {
   if (evt.target.classList.contains('popup__close-button')) {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
+     closePopup(evt.currentTarget);
   }
 }
 // закрытие попапов по esc
@@ -155,11 +156,11 @@ cardsForm.addEventListener('submit', (submitFormHandler) => {
   closePopup(popupAddCardsElement);
 });
 // обработка и перебор массива
-function renderCard() {
+function renderCards() {
   initialCards.forEach((item) => {
     const cardCreation = createCard(item);
     cardsContainer.prepend(cardCreation);
   });
 }
 
-renderCard();
+renderCards();
