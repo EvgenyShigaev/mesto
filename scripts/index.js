@@ -1,3 +1,42 @@
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
+const initialCards = [
+  {
+    name: 'г. Выборг',
+    link: 'https://images.unsplash.com/photo-1536012354193-8bb300dc3ce6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+  },
+  {
+    name: 'г. Судак',
+    link: 'https://images.unsplash.com/photo-1565342403875-07a8dc5ed13c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+  },
+  {
+    name: 'Рускеала',
+    link: 'https://images.unsplash.com/photo-1573156667506-115190c68737?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+  },
+  {
+    name: 'Алтай',
+    link: 'https://images.unsplash.com/photo-1626538481998-0629afebd684?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+  },
+  {
+    name: 'Северная Осетия',
+    link: 'https://images.unsplash.com/photo-1653629154311-6ed0256d5782?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://images.unsplash.com/photo-1552588353-09a1c9524f49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+  }
+]
+
+const validation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active',
+};
+
 // подключение dom-элементов
 // попапы
 const popupProfileElement = document.querySelector('#popup_edit-profile');
@@ -24,6 +63,13 @@ const cardTemplate = document.querySelector('.template__element').content.queryS
 const bigPhoto = popupBigPhotoElement.querySelector('.popup__photo');
 const bigPhotoCaption = popupBigPhotoElement.querySelector('.popup__photo-caption');
 
+// // вадидация
+const formValidatorProfileForm = new FormValidator(validation, profileForm);
+formValidatorProfileForm.enableValidation();
+
+const formValidatorCardsForm = new FormValidator(validation, cardsForm);
+formValidatorCardsForm.enableValidation();
+
 // открытие попапов + слушатели
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -36,7 +82,7 @@ profileEditButton.addEventListener('click', () => {
   openPopup(popupProfileElement);
   insertProfileValues();
 });
-
+//
 function openAddCards() {
   openPopup(popupAddCardsElement);
   cardsForm.reset();
@@ -84,23 +130,17 @@ function closeByClickOnOverlay(evt) {
     closePopup(evt.target);
   }
 }
-// добавление карточек + открытие большой картинки
-function createCard(card) {
-  const templateCloneElement = cardTemplate.cloneNode(true);
-  const cardImage = templateCloneElement.querySelector('.element__image');
-  const cardImageName = templateCloneElement.querySelector('.element__text');
+//
+function openBigImage(link, name) {
+  bigPhoto.src = link;
+  bigPhoto.alt = name;
+  bigPhotoCaption.textContent = name;
+  openPopup(popupBigPhotoElement);
+}
 
-  cardImage.src = card.link;
-  cardImage.alt = card.name;
-  cardImageName.textContent = card.name;
-
-  cardImage.addEventListener('click', function () {
-    bigPhoto.src = card.link;
-    bigPhoto.alt = card.name;
-    bigPhotoCaption.textContent = card.name;
-    openPopup(popupBigPhotoElement);
-  });
-  return templateCloneElement;
+function createCard(evt) {
+  const card = new Card(evt, '.template__element', openBigImage);
+  return card.generateCard();
 }
 // сохранение информации из инпутов для добавления карточки
 cardsForm.addEventListener('submit', (submitFormHandler) => {
@@ -113,18 +153,6 @@ cardsForm.addEventListener('submit', (submitFormHandler) => {
   cardsContainer.prepend(cardValues);
   cardsForm.reset();
   closePopup(popupAddCardsElement);
-});
-// лайки
-cardsContainer.addEventListener('click', function (evt) {
-  if (evt.target.classList.contains('element__like')) {
-    evt.target.classList.toggle('element__like_active');
-  }
-});
-// удаление карточки
-cardsContainer.addEventListener('click', function (evt) {
-  if (evt.target.classList.contains('element__delete-button')) {
-    evt.target.closest('.element').remove();
-  }
 });
 // обработка и перебор массива
 function renderCard() {
