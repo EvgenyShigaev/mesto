@@ -1,15 +1,16 @@
 export default class Card {
-  constructor(data, templateSelector, openBigImage) {
-    this._data = data;
+  constructor(cardData, templateSelector, handleCardClick) {
+    this._cardData = cardData;
     this._templateSelector = templateSelector;
-    this._openBigImage = openBigImage;
-
-    this._link = data.link;
-    this._name = data.name;
+    this._handleCardClick = handleCardClick;
   }
   //
   _getTemplate() {
-    const cardElement = document.querySelector(this._templateSelector).content.querySelector('.element').cloneNode(true);
+    const cardElement = document
+      .querySelector(this._templateSelector)
+      .content.querySelector('.element')
+      .cloneNode(true);
+
     return cardElement;
   }
   //
@@ -20,9 +21,9 @@ export default class Card {
     this._cardText = this._element.querySelector('.element__text');
     this._cardLike = this._element.querySelector('.element__like');
 
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
-    this._cardText.textContent = this._name;
+    this._cardImage.src = this._cardData.link;
+    this._cardImage.alt = this._cardData.name;
+    this._cardText.textContent = this._cardData.name;
 
     this._setEventListeners();
 
@@ -46,7 +47,7 @@ export default class Card {
       this._handleDelete();
     });
     this._cardImage.addEventListener('click', () => {
-      this._openBigImage(this._link, this._name);
+      this._handleCardClick(this._cardData);
     });
   }
 }
