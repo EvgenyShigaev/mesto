@@ -37,6 +37,7 @@ const api = new Api({
     authorization: "561c351e-1fa6-44a4-8675-268f6f753b23",
   },
 });
+
 //
 Promise.all([api.getInitialCards(), api.getUserData()])
   .then(([initialCards, user]) => {
@@ -47,31 +48,6 @@ Promise.all([api.getInitialCards(), api.getUserData()])
   .catch((err) => {
     console.log(`Ошибка: ${err}`);
   });
-
-//
-const formValidatorProfileForm = new FormValidator(validation, profileForm);
-formValidatorProfileForm.enableValidation();
-
-const formValidatorCardsForm = new FormValidator(validation, cardsForm);
-formValidatorCardsForm.enableValidation();
-
-const formValidatorAvatarForm = new FormValidator(validation, avatarForm);
-formValidatorAvatarForm.enableValidation();
-
-const popupWithForm = new PopupWithForm(popupEditProfile, userDataSubmit);
-popupWithForm.setEventListeners();
-
-const popupWithFormAddCards = new PopupWithForm(popupAddCards, addCardsDataSubmit);
-popupWithFormAddCards.setEventListeners();
-
-const popupWithImage = new PopupWithImage(popupBigImage);
-popupWithImage.setEventListeners();
-
-const popupWithFormAvatar = new PopupWithForm(popupAvatar, openAvatar);
-popupWithFormAvatar.setEventListeners();
-
-const popupDeleteCard = new PopupWithSubmit(popupConfirmDelete);
-popupDeleteCard.setEventListeners();
 
 //
 const userInfo = new UserInfo({
@@ -222,3 +198,28 @@ function openAddCards() {
 }
 
 cardsAddButton.addEventListener('click', openAddCards);
+
+//
+const formValidatorProfileForm = new FormValidator(validation, profileForm);
+formValidatorProfileForm.enableValidation();
+
+const formValidatorCardsForm = new FormValidator(validation, cardsForm);
+formValidatorCardsForm.enableValidation();
+
+const formValidatorAvatarForm = new FormValidator(validation, avatarForm);
+formValidatorAvatarForm.enableValidation();
+
+const popupWithForm = new PopupWithForm(popupEditProfile, userDataSubmit);
+popupWithForm.setEventListeners();
+
+const popupWithFormAddCards = new PopupWithForm(popupAddCards, addCardsDataSubmit);
+popupWithFormAddCards.setEventListeners();
+
+const popupWithImage = new PopupWithImage(popupBigImage);
+popupWithImage.setEventListeners();
+
+const popupWithFormAvatar = new PopupWithForm(popupAvatar, openAvatar);
+popupWithFormAvatar.setEventListeners();
+
+const popupDeleteCard = new PopupWithSubmit(popupConfirmDelete);
+popupDeleteCard.setEventListeners();
