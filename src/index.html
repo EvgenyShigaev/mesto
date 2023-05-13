@@ -17,6 +17,7 @@
     <section class="profile">
       <div class="profile__container">
         <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
+        <button class="profile__avatar-button" type="button"></button>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button" aria-label="Редактирование профиля"></button>
@@ -32,7 +33,7 @@
   </main>
 
   <footer class="footer">
-    <p class="footer__copyright" lang="en">&copy; 2022 Mesto Russia</p>
+    <p class="footer__copyright" lang="en">&copy; 2023 Mesto Russia</p>
   </footer>
 
   <div class="popup" id="popup_edit-profile">
@@ -67,13 +68,39 @@
     </div>
   </div>
 
+  <div class="popup" id="popup_edit-avatar">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form" name="avatar_form" novalidate>
+        <input class="popup__input" id="avatar-input" type="url" name="avatar" placeholder="Ссылка на картинку"
+          required>
+        <span class="popup__input-error avatar-input-error"></span>
+        <button class="popup__save-button" type="submit" aria-label="Сохранение изменений">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup" id="popup_confirm-delete">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <form class="popup__form" name="confirm_delete" novalidate>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button class="popup__save-button" name="submit" type="submit" aria-label="Подтверждение удаления">Да</button>
+      </form>
+    </div>
+  </div>
+
   <template id="template__element">
     <li class="element">
       <button class="element__delete-button" type="button"></button>
       <img class="element__image" src="#" alt="">
       <div class="element__container">
         <h2 class="element__text"></h2>
-        <button class="element__like" type="button" aria-label="Лайк"></button>
+        <div class="element__counter-box">
+          <button class="element__like" type="button" aria-label="Лайк"></button>
+          <p class="element__like-counter">0</p>
+        </div>
       </div>
     </li>
   </template>
@@ -86,7 +113,6 @@
     </figure>
   </div>
 
-  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>
